@@ -24,9 +24,11 @@ public final class ParsedRule<T> implements Comparable<ParsedRule> {
     public final List<Validator<T>> validators;
     public final T defaultValue;
     public final String defaultAsString;
+    public final SettingsManager settingsManager;
 
-    ParsedRule(Field field, Rule rule)
+    ParsedRule(Field field, Rule rule, SettingsManager settingsManager)
     {
+        this.settingsManager = settingsManager;
         this.field = field;
         this.name = rule.name().isEmpty() ? field.getName() : rule.name();
         this.type = (Class<T>) field.getType();
@@ -93,7 +95,7 @@ public final class ParsedRule<T> implements Comparable<ParsedRule> {
 
     public ParsedRule<T> set(ServerCommandSource source, String value)
     {
-        if (OptionsServer.settingsManager != null && OptionsServer.settingsManager.locked)
+        if (settingsManager != null && settingsManager.locked)
             return null;
         if (type == String.class)
         {
@@ -141,7 +143,7 @@ public final class ParsedRule<T> implements Comparable<ParsedRule> {
             if (!value.equals(get()))
             {
                 this.field.set(null, value);
-                OptionsServer.settingsManager.notifyRuleChanged(source, this, stringValue);
+                settingsManager.notifyRuleChanged(source, this, stringValue);
             }
         }
         catch (IllegalAccessException e)

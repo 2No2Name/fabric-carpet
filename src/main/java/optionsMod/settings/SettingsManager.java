@@ -91,7 +91,7 @@ public class SettingsManager
         {
             Rule rule = f.getAnnotation(Rule.class);
             if (rule == null) continue;
-            ParsedRule parsed = new ParsedRule(f, rule);
+            ParsedRule parsed = new ParsedRule(f, rule, this);
             rules.put(parsed.name, parsed);
         }
     }

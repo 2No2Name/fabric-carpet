@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "carpet",
+  "id": "optionsmod",
   "version": "1.3.2",
 
-  "name": "Carpet Mod in Fabric",
-  "description": "Carpet made out of fabric",
+  "name": "Options Mod in Fabric",
+  "description": "Options for other mods",
   "authors": [
-    "gnembon, ..."
+    "gnembon, 2No2Name"
   ],
   "contact": {
     "homepage": "https://github.com/gnembon/fabric-carpet",
@@ -22,7 +22,7 @@
     ]
   },
   "mixins": [
-    "carpet.mixins.json"
+    "optionsMod.mixins.json"
   ],
 
   "depends": {

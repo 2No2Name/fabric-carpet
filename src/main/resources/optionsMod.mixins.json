@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "refmap": "fabric-optionsMod-refmap.json",
+  "package": "optionsMod.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "CommandManagerMixin",
+    "MinecraftServer_coreMixin",
+    "ServerPlayNetworkHandler_coreMixin"
+  ],
+  "client": [
+    "MinecraftClientMixin",
+    "IntegratedServerMixin"
+  ],
+  "server": [
+    "MinecraftDedicatedServerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
