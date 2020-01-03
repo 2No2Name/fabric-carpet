@@ -1,7 +1,7 @@
-package optionsMod;
+package optionsmod;
 
 
-import optionsMod.settings.SettingsManager;
+import optionsmod.settings.SettingsManager;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
@@ -10,14 +10,14 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OptionsServer // static for now - easier to handle all around the code, its one anyways
+public class OptionsmodServer // static for now - easier to handle all around the code, its one anyways
 {
     public static MinecraftServer minecraft_server;
     private static CommandDispatcher<ServerCommandSource> currentCommandDispatcher;
-    public static List<optionsModExtension> extensions = new ArrayList<>();
+    public static List<OptionsmodExtension> extensions = new ArrayList<>();
 
     // Separate from onServerLoaded, because a server can be loaded multiple times in singleplayer
-    public static void manageExtension(optionsModExtension extension)
+    public static void manageExtension(OptionsmodExtension extension)
     {
         extensions.add(extension);
         // for extensions that come late to the party, after server is created / loaded
@@ -31,12 +31,12 @@ public class OptionsServer // static for now - easier to handle all around the c
 
     public static void onGameStarted()
     {
-        extensions.forEach(optionsModExtension::onGameStarted);
+        extensions.forEach(OptionsmodExtension::onGameStarted);
     }
 
     public static void onServerLoaded(MinecraftServer server)
     {
-        OptionsServer.minecraft_server = server;
+        OptionsmodServer.minecraft_server = server;
         extensions.forEach(e -> {
             SettingsManager sm = e.customSettingsManager();
             if (sm != null) sm.attachServer(server);
@@ -53,9 +53,8 @@ public class OptionsServer // static for now - easier to handle all around the c
     {
         // registering command of extensions that has registered before either server is created
         // for all other, they will have them registered when they add themselves
-        //todo move currentCommandDispatcher = dispatcher; here?
-        extensions.forEach(e -> e.registerCommands(dispatcher));
         currentCommandDispatcher = dispatcher;
+        extensions.forEach(e -> e.registerCommands(dispatcher));
     }
 
     public static void onPlayerLoggedIn(ServerPlayerEntity player)

@@ -1,7 +1,6 @@
-package optionsMod.settings;
+package optionsmod.settings;
 
-import optionsMod.OptionsServer;
-import optionsMod.utils.Messenger;
+import optionsmod.utils.Messenger;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.server.command.ServerCommandSource;
 

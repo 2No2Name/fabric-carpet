@@ -1,4 +1,4 @@
-package optionsMod.settings;
+package optionsmod.settings;
 
 public class RuleCategory
 {

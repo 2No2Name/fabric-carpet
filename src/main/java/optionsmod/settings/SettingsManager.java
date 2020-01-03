@@ -1,7 +1,7 @@
-package optionsMod.settings;
+package optionsmod.settings;
 
-import optionsMod.OptionsServer;
-import optionsMod.utils.Messenger;
+import optionsmod.OptionsmodServer;
+import optionsmod.utils.Messenger;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
@@ -172,7 +172,7 @@ public class SettingsManager
         catch (IOException e)
         {
             e.printStackTrace();
-            LOG.error("[CM]: failed write "+identifier+".conf config file");
+            LOG.error("[OM]: failed write "+identifier+".conf config file");
         }
         ///todo is it really needed? resendCommandTree();
     }
@@ -216,7 +216,7 @@ public class SettingsManager
         locked = false;
         if (conf.getRight())
         {
-            LOG.info("[CM]: "+fancyName+" features are locked by the administrator");
+            LOG.info("[OM]: "+fancyName+" features are locked by the administrator");
             disableBooleanCommands();
         }
         for (String key: conf.getLeft().keySet())
@@ -224,11 +224,11 @@ public class SettingsManager
             try
             {
                 if (rules.get(key).set(server.getCommandSource(), conf.getLeft().get(key)) != null)
-                    LOG.info("[CM]: loaded setting " + key + " as " + conf.getLeft().get(key) + " from " + identifier + ".conf");
+                    LOG.info("[OM]: loaded setting " + key + " as " + conf.getLeft().get(key) + " from " + identifier + ".conf");
             }
             catch (Exception exc)
             {
-                LOG.error("[CM Error]: Failed to load setting: "+key+", "+exc);
+                LOG.error("[OM Error]: Failed to load setting: "+key+", "+exc);
             }
         }
         locked = conf.getRight();
@@ -255,14 +255,14 @@ public class SettingsManager
                 {
                     if (!rules.containsKey(fields[0]))
                     {
-                        LOG.error("[CM]: "+fancyName+" Setting " + fields[0] + " is not a valid - ignoring...");
+                        LOG.error("[OM]: "+fancyName+" Setting " + fields[0] + " is not a valid - ignoring...");
                         continue;
                     }
                     ParsedRule rule = rules.get(fields[0]);
 
                     if (!(rule.options.contains(fields[1])) && rule.isStrict)
                     {
-                        LOG.error("[CM]: The value of " + fields[1] + " for " + fields[0] + "("+fancyName+") is not valid - ignoring...");
+                        LOG.error("[OM]: The value of " + fields[1] + " for " + fields[0] + "("+fancyName+") is not valid - ignoring...");
                         continue;
                     }
                     result.put(fields[0],fields[1]);
@@ -345,7 +345,7 @@ public class SettingsManager
     {
         if (dispatcher.getRoot().getChildren().stream().anyMatch(node -> node.getName().equalsIgnoreCase(identifier)))
         {
-            Messenger.print_server_message(OptionsServer.minecraft_server,
+            Messenger.print_server_message(OptionsmodServer.minecraft_server,
                     Messenger.c("rb Failed to add settings command for " + identifier + ". It is masking previous command."));
             return;
         }

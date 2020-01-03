@@ -1,6 +1,6 @@
-package optionsMod.mixins;
+package optionsmod.mixins;
 
-import optionsMod.OptionsServer;
+import optionsmod.OptionsmodServer;
 import com.google.gson.JsonElement;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.LevelGeneratorType;
@@ -26,19 +26,19 @@ public abstract class MinecraftServer_coreMixin
             )
     )
     private void onTick(BooleanSupplier booleanSupplier_1, CallbackInfo ci) {
-        OptionsServer.tick((MinecraftServer) (Object) this);
+        OptionsmodServer.tick((MinecraftServer) (Object) this);
     }
 
     // Dedicated server only
     @Inject(method = "loadWorld", at = @At("HEAD"))
     private void serverLoaded(String string_1, String string_2, long long_1, LevelGeneratorType levelGeneratorType_1, JsonElement jsonElement_1, CallbackInfo ci)
     {
-        OptionsServer.onServerLoaded((MinecraftServer) (Object) this);
+        OptionsmodServer.onServerLoaded((MinecraftServer) (Object) this);
     }
 
     @Inject(method = "shutdown", at = @At("HEAD"))
     private void serverClosed(CallbackInfo ci)
     {
-        OptionsServer.onServerClosed((MinecraftServer) (Object) this);
+        OptionsmodServer.onServerClosed((MinecraftServer) (Object) this);
     }
 }

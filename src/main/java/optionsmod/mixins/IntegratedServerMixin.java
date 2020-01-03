@@ -1,6 +1,6 @@
-package optionsMod.mixins;
+package optionsmod.mixins;
 
-import optionsMod.OptionsServer;
+import optionsmod.OptionsmodServer;
 import com.google.gson.JsonElement;
 import net.minecraft.server.integrated.IntegratedServer;
 import net.minecraft.world.level.LevelGeneratorType;
@@ -14,6 +14,6 @@ public class IntegratedServerMixin
 {
     @Inject(method = "loadWorld", at = @At("HEAD"))
     private void onSetupServerIntegrated(String string_1, String string_2, long long_1, LevelGeneratorType levelGeneratorType_1, JsonElement jsonElement_1, CallbackInfo ci) {
-        OptionsServer.onServerLoaded((IntegratedServer) (Object) this);
+        OptionsmodServer.onServerLoaded((IntegratedServer) (Object) this);
     }
 }

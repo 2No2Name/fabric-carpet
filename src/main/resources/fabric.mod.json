@@ -6,15 +6,15 @@
   "name": "Options Mod in Fabric",
   "description": "Options for other mods",
   "authors": [
-    "gnembon, 2No2Name"
+    "gnembon",
+    "2No2Name"
   ],
   "contact": {
-    "homepage": "https://github.com/gnembon/fabric-carpet",
-    "sources": "https://github.com/gnembon/fabric-carpet"
+    "homepage": "https://github.com/2No2Name/optionsmod",
+    "sources": "https://github.com/2No2Name/optionsmod"
   },
 
   "license": "GNU LGPL V3",
-  "icon": "assets/carpet/icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -22,7 +22,7 @@
     ]
   },
   "mixins": [
-    "optionsMod.mixins.json"
+    "optionsmod.mixins.json"
   ],
 
   "depends": {

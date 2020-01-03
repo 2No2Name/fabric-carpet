@@ -1,6 +1,6 @@
-package optionsMod.mixins;
+package optionsmod.mixins;
 
-import optionsMod.OptionsServer;
+import optionsmod.OptionsmodServer;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -19,11 +19,11 @@ public class ServerPlayNetworkHandler_coreMixin {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onPlayerConnect(MinecraftServer server, ClientConnection client, ServerPlayerEntity player, CallbackInfo ci) {
-        OptionsServer.onPlayerLoggedIn(player);
+        OptionsmodServer.onPlayerLoggedIn(player);
     }
 
     @Inject(method = "onDisconnected", at = @At("HEAD"))
     private void onPlayerDisconnect(Text reason, CallbackInfo ci) {
-        OptionsServer.onPlayerLoggedOut(this.player);
+        OptionsmodServer.onPlayerLoggedOut(this.player);
     }
 }

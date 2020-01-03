@@ -1,12 +1,12 @@
-package optionsMod;
+package optionsmod;
 
-import optionsMod.settings.SettingsManager;
+import optionsmod.settings.SettingsManager;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public interface optionsModExtension
+public interface OptionsmodExtension
 {
     /**
      * When game started before world is loaded

@@ -1,6 +1,6 @@
-package optionsMod.mixins;
+package optionsmod.mixins;
 
-import optionsMod.OptionsServer;
+import optionsmod.OptionsmodServer;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
@@ -15,13 +15,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(CommandManager.class)
 public abstract class CommandManagerMixin
 {
-
     @Shadow
     @Final
     private CommandDispatcher<ServerCommandSource> dispatcher;
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onRegister(boolean boolean_1, CallbackInfo ci) {
-        OptionsServer.registerCommands(this.dispatcher);
+        OptionsmodServer.registerCommands(this.dispatcher);
     }
 }

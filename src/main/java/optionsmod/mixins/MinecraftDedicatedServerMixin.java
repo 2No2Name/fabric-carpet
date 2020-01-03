@@ -1,6 +1,6 @@
-package optionsMod.mixins;
+package optionsmod.mixins;
 
-import optionsMod.OptionsServer;
+import optionsmod.OptionsmodServer;
 import net.minecraft.server.dedicated.MinecraftDedicatedServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,8 +18,8 @@ public class MinecraftDedicatedServerMixin
             shift = At.Shift.BEFORE
     ))
     private void onSetupServer(CallbackInfoReturnable<Boolean> cir) {
-        //CM start game hook
-        OptionsServer.onGameStarted();
+        //OM start game hook
+        OptionsmodServer.onGameStarted();
 
     }
 }

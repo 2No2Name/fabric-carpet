@@ -1,7 +1,7 @@
 {
   "required": true,
-  "refmap": "fabric-optionsMod-refmap.json",
-  "package": "optionsMod.mixins",
+  "refmap": "optionsmod-refmap.json",
+  "package": "optionsmod.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "CommandManagerMixin",
