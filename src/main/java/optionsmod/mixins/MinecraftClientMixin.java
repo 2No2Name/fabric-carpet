@@ -12,7 +12,7 @@ public class MinecraftClientMixin
 {
     //to inject right before
     // this.tickWorlds(booleanSupplier_1);
-    @Inject(method = "init", at = @At(value = "RETURN")
+    @Inject(method = "run", at = @At(value = "HEAD")
     )
     private void onInit(CallbackInfo ci) {
         //OM start game hook
